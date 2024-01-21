@@ -1,9 +1,9 @@
 
 
 
-const express = require("express");
-const axios = require("axios");
-const dotenv = require("dotenv");
+import axios from 'axios';
+import express from "express"
+import dotenv from 'dotenv';
 
 const app = express();
 app.use(express.json());
