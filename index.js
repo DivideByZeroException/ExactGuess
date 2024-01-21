@@ -54,6 +54,7 @@ client.on('messageCreate', (message) => {
             }
         }
         if (message.content.toLowerCase() == "/alive") {
+            const channel = client.channels.cache.get(channelId);
             if (channel ) {
 
                 channel.send("Alive")
@@ -62,6 +63,7 @@ client.on('messageCreate', (message) => {
             }
         }
         if (message.content.toLowerCase() == "/image" || message.content.toLowerCase() == "/img") {
+            const channel = client.channels.cache.get(channelId);
             if (channel && imgURL!="") {
 
              
