@@ -53,6 +53,29 @@ client.on('messageCreate', (message) => {
                 message.react(flagEmoji);
             }
         }
+        if (message.content.toLowerCase() == "/alive") {
+            if (channel ) {
+
+                channel.send("Alive")
+                
+                setImg();
+            }
+        }
+        if (message.content.toLowerCase() == "/image" && message.content.toLowerCase() == "/img") {
+            if (channel && imgURL!="") {
+
+             
+                    let exampleEmbed = new EmbedBuilder()
+                        .setColor(generateRandomHexColor())
+                        .setTitle("Картинка")
+                        .setImage(imgURL)
+                    channel.send({
+                        embeds: [exampleEmbed]
+                    });
+        
+                
+            }
+        }
         if (message.content.toLowerCase() == "/skip") {
             const channel = client.channels.cache.get(channelId);
             if (channel && iso!="" && iso!=null) {
