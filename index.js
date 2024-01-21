@@ -119,6 +119,7 @@ function setImg() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
+            if(data.data[0].thumb_1024_url!=undefined&data.data[0].thumb_1024_url!=null && data.data[0].thumb_1024_url!=""){
             imgURL = data.data[0].thumb_1024_url;
             var coords = data.data[0].computed_geometry.coordinates;
             var x = coords[0];
@@ -136,6 +137,7 @@ function setImg() {
                         sendImage();
                     }
                 });
+            }
         })
         .catch(error => {
             console.error('Error fetching data:', error);
