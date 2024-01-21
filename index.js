@@ -6,7 +6,7 @@ import express from "express"
 import dotenv from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { EmbedBuilder } from 'discord.js';
-
+const keep_alive = require('./keep_alive.js');
 
 
 dotenv.config();
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     console.log('Привет, это работающий сервер!');
   });
 
-const port = 5000;
+const port = 8080;
 app.listen(port, () => console.log(`Listening to port ${port}`));
 
 
