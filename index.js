@@ -36,7 +36,7 @@ const client = new Client({
 });
 client.on('ready', () => {
     console.log(`Бот запущен как ${client.user.tag}`);
-    setImg();
+    //setImg();
 });
 
 
