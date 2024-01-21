@@ -36,11 +36,45 @@ const client = new Client({
 });
 client.on('ready', () => {
     console.log(`Бот запущен как ${client.user.tag}`);
-    //setImg();
+    setImg();
 });
 
 
+client.on('messageCreate', (message) => {
 
+    if (message.channelId != channelId) {} else {
+        if (message.content.toLowerCase() == "/hint") {
+            if(iso!="" && iso!=null){
+                let flagEmoji = String.fromCodePoint(...iso.split('').map(c => c.charCodeAt(0) + 127397));
+                message.react(flagEmoji);
+            }
+        }
+        if (message.content.toLowerCase() == "/skip") {
+            const channel = client.channels.cache.get(channelId);
+            if (channel && iso!="" && iso!=null) {
+
+                channel.send("Это было " + iso + " " + String.fromCodePoint(...iso.split('').map(c => c.charCodeAt(0) + 127397)))
+                iso = null;
+                setImg();
+            }
+        }
+
+        if (message.content.toUpperCase() == iso) {
+            message.react('✅');
+           
+            const channel = client.channels.cache.get(channelId);
+ 
+            if (channel) {
+                channel.send("<@"+message.author.id+"> Правильно угадал. Страна была "+iso + " " + String.fromCodePoint(...iso.split('').map(c => c.charCodeAt(0) + 127397))+ '. Следующая картинка на подходе!');
+            }
+            iso = null;
+            setImg();
+        } else if (message.content.length == 2) {
+            message.react('❌');
+        }
+
+    }
+});
 
 
 
