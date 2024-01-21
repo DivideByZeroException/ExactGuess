@@ -6,7 +6,7 @@ import express from "express"
 import dotenv from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { EmbedBuilder } from 'discord.js';
-const keep_alive = require('./keep_alive.js');
+import keep_alive from './keep_alive.js';
 
 
 dotenv.config();
