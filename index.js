@@ -13,6 +13,10 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    console.log('Привет, это работающий сервер!');
+  });
+  
 const port = 5000;
 app.listen(port, () => console.log(`Listening to port ${port}`));
 
