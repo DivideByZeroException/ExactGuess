@@ -58,10 +58,10 @@ client.on('messageCreate', (message) => {
 
                 channel.send("Alive")
                 
-                setImg();
+
             }
         }
-        if (message.content.toLowerCase() == "/image" && message.content.toLowerCase() == "/img") {
+        if (message.content.toLowerCase() == "/image" || message.content.toLowerCase() == "/img") {
             if (channel && imgURL!="") {
 
              
