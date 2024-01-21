@@ -109,40 +109,40 @@ function sendImage() {
 }
 
 async function setImg() {
-
-    var randomCoordinates = generateRandomCoordinates();
-    var url = `https://graph.mapillary.com/images?access_token=${apiKey}&fields=id,computed_geometry,thumb_1024_url&bbox=` + randomCoordinates.minLongitude + "," + randomCoordinates.minLatitude + "," + randomCoordinates.maxLongitude + "," + randomCoordinates.maxLatitude + "," + "&limit=1";
-    console.log(url);
+    console.log("Все ок");
+    // var randomCoordinates = generateRandomCoordinates();
+    // var url = `https://graph.mapillary.com/images?access_token=${apiKey}&fields=id,computed_geometry,thumb_1024_url&bbox=` + randomCoordinates.minLongitude + "," + randomCoordinates.minLatitude + "," + randomCoordinates.maxLongitude + "," + randomCoordinates.maxLatitude + "," + "&limit=1";
+    // console.log(url);
  
-    try {
-        const response = await axios.get(url);
-        const data = response.data;
+    // try {
+    //     const response = await axios.get(url);
+    //     const data = response.data;
 
-        if (data.data.length > 0) {
-            const imgURL = data.data[0].thumb_1024_url;
-            const coords = data.data[0].computed_geometry.coordinates;
-            const x = coords[0];
-            const y = coords[1];
-            console.log(imgURL);
+    //     if (data.data.length > 0) {
+    //         const imgURL = data.data[0].thumb_1024_url;
+    //         const coords = data.data[0].computed_geometry.coordinates;
+    //         const x = coords[0];
+    //         const y = coords[1];
+    //         console.log(imgURL);
 
-            const countryCode = await getCountryCodeByCoordinates(y, x, process.env.GEO_NAME);
+    //         const countryCode = await getCountryCodeByCoordinates(y, x, process.env.GEO_NAME);
 
-            console.log(countryCode);
+    //         console.log(countryCode);
 
-            if (countryCode === undefined) {
-                setImg();
-            } else {
-                const iso = countryCode;
-                console.log(iso);
-                sendImage();
-            }
-        } else {
-            setImg();
-        }
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        setImg();
-    }
+    //         if (countryCode === undefined) {
+    //             setImg();
+    //         } else {
+    //             iso = countryCode;
+    //             console.log(iso);
+    //             sendImage();
+    //         }
+    //     } else {
+    //         setImg();
+    //     }
+    // } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //     setImg();
+    // }
     
 };
 
