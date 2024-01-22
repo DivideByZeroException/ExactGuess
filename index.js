@@ -7,21 +7,13 @@ import dotenv from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { EmbedBuilder } from 'discord.js';
 import https from "https";
+import { setInterval } from 'timers';
 
 
-
-dotenv.config();
-const app = express();
-app.use(express.json());
-
-app.get('/', (req, res) => {
-    console.log('Привет, это работающий сервер!');
-  });
-
-const port = 8080;
-app.listen(port, () => console.log(`Listening to port ${port}`));
-
-const handler = async (event, context) => {
+function myFunction() {
+  console.log('Функция была вызвана!');
+    
+    const handler = async (event, context) => {
     const url = 'https://exactguess.onrender.com';
   
     return new Promise((resolve, reject) => {
@@ -46,6 +38,25 @@ const handler = async (event, context) => {
       req.end();
     });
   };
+}
+
+
+const interval = 5 * 60 * 1000;
+
+setInterval(myFunction, interval);
+
+
+dotenv.config();
+const app = express();
+app.use(express.json());
+
+app.get('/', (req, res) => {
+    console.log('Привет, это работающий сервер!');
+  });
+
+const port = 8080;
+app.listen(port, () => console.log(`Listening to port ${port}`));
+
   
   export { handler as default };
   
