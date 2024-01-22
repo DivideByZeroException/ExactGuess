@@ -8,33 +8,6 @@ import { Client, GatewayIntentBits } from 'discord.js';
 import { EmbedBuilder } from 'discord.js';
 import https from "https";
 
-const handler = async (event, context) => {
-  const url = 'https://exactguess.onrender.com';
-
-  return new Promise((resolve, reject) => {
-    const req = https.get(url, (res) => {
-      if (res.statusCode === 200) {
-        resolve({
-          statusCode: 200,
-          body: 'Server pinged successfully',
-        });
-        console.log("PING!");
-      } else {
-        reject(
-          new Error(`Server ping failed with status code: ${res.statusCode}`)
-        );
-      }
-    });
-
-    req.on('error', (error) => {
-      reject(error);
-    });
-
-    req.end();
-  });
-};
-
-export { handler as default };
 
 
 dotenv.config();
@@ -48,7 +21,34 @@ app.get('/', (req, res) => {
 const port = 8080;
 app.listen(port, () => console.log(`Listening to port ${port}`));
 
-
+const handler = async (event, context) => {
+    const url = 'https://exactguess.onrender.com';
+  
+    return new Promise((resolve, reject) => {
+      const req = https.get(url, (res) => {
+        if (res.statusCode === 200) {
+          resolve({
+            statusCode: 200,
+            body: 'Server pinged successfully',
+          });
+          console.log("PING!");
+        } else {
+          reject(
+            new Error(`Server ping failed with status code: ${res.statusCode}`)
+          );
+        }
+      });
+  
+      req.on('error', (error) => {
+        reject(error);
+      });
+  
+      req.end();
+    });
+  };
+  
+  export { handler as default };
+  
 let iso = "";
 
 const apiKey = process.env.API_KEY_MAPILLARY;
