@@ -10,7 +10,7 @@ import https from "https";
 import { setInterval } from 'timers';
 
   
-export { handler as default };
+
 function myFunction() {
   console.log('Функция была вызвана!');
     
