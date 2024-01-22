@@ -9,7 +9,8 @@ import { EmbedBuilder } from 'discord.js';
 import https from "https";
 import { setInterval } from 'timers';
 
-
+  
+export { handler as default };
 function myFunction() {
   console.log('Функция была вызвана!');
     
@@ -57,8 +58,7 @@ app.get('/', (req, res) => {
 const port = 8080;
 app.listen(port, () => console.log(`Listening to port ${port}`));
 
-  
-  export { handler as default };
+
   
 let iso = "";
 
