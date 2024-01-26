@@ -264,9 +264,11 @@
 
 // client.login(process.env.DISCORD_TOKEN);
 
-import http from "http";
- 
-const server =  http.createServer(function(request, response){
-    response.end("Hello METANIT.COM!");
+import express from "express";
+const app = express();
+app.listen(3000,()=>{
+    console.log("Серв включен");
 });
-server.listen(3000);
+app.get('/',async(req,res)=>{
+    res.send("Hi")
+});
