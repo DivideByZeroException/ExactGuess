@@ -264,7 +264,7 @@
 
 // client.login(process.env.DISCORD_TOKEN);
 
-const http = require("http");
+import http from "http";
  
 const server =  http.createServer(function(request, response){
     response.end("Hello METANIT.COM!");
