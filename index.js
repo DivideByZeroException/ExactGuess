@@ -6,45 +6,8 @@ import express from "express"
 import dotenv from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { EmbedBuilder } from 'discord.js';
-import https from "https";
-import { setInterval } from 'timers';
-
-  
-
-function myFunction() {
-  console.log('Функция была вызвана!');
-    
-    const handler = async (event, context) => {
-    const url = 'https://exactguess.onrender.com';
-  
-    return new Promise((resolve, reject) => {
-      const req = https.get(url, (res) => {
-        if (res.statusCode === 200) {
-          resolve({
-            statusCode: 200,
-            body: 'Server pinged successfully',
-          });
-          console.log("PING!");
-        } else {
-          reject(
-            new Error(`Server ping failed with status code: ${res.statusCode}`)
-          );
-        }
-      });
-  
-      req.on('error', (error) => {
-        reject(error);
-      });
-  
-      req.end();
-    });
-  };
-}
 
 
-const interval = 5 * 60 * 1000;
-
-setInterval(myFunction, interval);
 
 
 dotenv.config();
